@@ -4,4 +4,7 @@ node_modules/
 .zip
 .odt
 atlas-credentials.env
+<<<<<<< HEAD
 video Tj.mp4.7z
+=======
+>>>>>>> 850c2d23f10b642b87eb955f91b50f622a271974
