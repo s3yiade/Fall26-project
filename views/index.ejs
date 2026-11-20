@@ -1,11 +1,69 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('partials/header') %>
+
+<!-- Hero: site name, team logo, and the button to create a study session -->
+<section class="hero text-center text-light">
+  <div class="container py-5">
+    <img src="/images/logo.svg" alt="<%= siteName %> logo" width="120" height="120" class="mb-3 shadow rounded-4">
+    <h1 class="display-4 fw-bold"><%= siteName %></h1>
+    <p class="lead mb-4">Find a study group for your course, or host your own in under a minute.</p>
+    <a href="/create" class="btn btn-accent btn-lg">
+      <i class="fa-solid fa-plus me-2"></i>Host a Study Session
+    </a>
+  </div>
+</section>
+
+<!-- Upcoming sessions table (read from MongoDB in routes/index.js) -->
+<section id="sessions" class="container py-5">
+
+  <% if (created) { %>
+    <div class="alert alert-success">
+      <i class="fa-solid fa-circle-check me-2"></i>Your study session was created.
+    </div>
+  <% } %>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h3 mb-0">Upcoming Study Sessions</h2>
+    <span class="badge text-bg-secondary"><%= sessions.length %> upcoming</span>
+  </div>
+
+  <% if (sessions.length === 0) { %>
+    <!-- Empty state: shown when there are no upcoming sessions yet -->
+    <div class="text-center text-muted border rounded p-5">
+      <i class="fa-regular fa-calendar fa-2x mb-3"></i>
+      <p class="mb-3">No upcoming sessions yet. Be the first to host one.</p>
+      <a href="/create" class="btn btn-brand"><i class="fa-solid fa-plus me-2"></i>Host a Study Session</a>
+    </div>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Course</th>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th class="text-center">Open Spots</th>
+            <th>Host</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sessions.forEach(function (s) { %>
+            <tr>
+              <td><span class="badge bg-brand"><%= s.courseCode %></span></td>
+              <td><%= s.topic %></td>
+              <%# timeZone UTC: dates are stored as midnight UTC, so this shows the day the host picked %>
+              <td><%= s.date.toLocaleDateString('en-CA', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) %></td>
+              <td><%= s.time %></td>
+              <td><i class="fa-solid fa-location-dot text-muted me-1"></i><%= s.location %></td>
+              <td class="text-center"><%= s.spotsAvailable %></td>
+              <td><%= s.createdBy %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</section>
+
+<%- include('partials/footer') %>

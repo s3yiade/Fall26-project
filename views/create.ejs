@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<section class="container py-5" style="max-width: 760px;">
+  <h1 class="h2 mb-1"><i class="fa-solid fa-users me-2 text-brand"></i><%= title %></h1>
+  <p class="text-muted mb-4">Fill in the details and your session will appear on the home page.</p>
+
+  <%# Validation messages from the POST /create route %>
+  <% if (errors.length > 0) { %>
+    <div class="alert alert-danger">
+      <strong>Please fix the following:</strong>
+      <ul class="mb-0">
+        <% errors.forEach(function (e) { %><li><%= e %></li><% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <%# "form" holds what the user typed, so their input stays filled in after an error %>
+  <form action="/create" method="POST" class="card card-body shadow-sm">
+    <div class="row g-3">
+      <div class="col-sm-4">
+        <label for="courseCode" class="form-label">Course code</label>
+        <input type="text" class="form-control" id="courseCode" name="courseCode"
+               placeholder="INFR3120" value="<%= form.courseCode || '' %>" required>
+      </div>
+      <div class="col-sm-8">
+        <label for="topic" class="form-label">Topic</label>
+        <input type="text" class="form-control" id="topic" name="topic"
+               placeholder="Express routes and EJS review" value="<%= form.topic || '' %>" required>
+      </div>
+      <div class="col-sm-4">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" value="<%= form.date || '' %>" required>
+      </div>
+      <div class="col-sm-4">
+        <label for="time" class="form-label">Time</label>
+        <input type="time" class="form-control" id="time" name="time" value="<%= form.time || '' %>" required>
+      </div>
+      <div class="col-sm-4">
+        <label for="spotsAvailable" class="form-label">Open spots</label>
+        <input type="number" class="form-control" id="spotsAvailable" name="spotsAvailable"
+               min="1" max="50" value="<%= form.spotsAvailable || 4 %>" required>
+      </div>
+      <div class="col-12">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location"
+               placeholder="Library room 2B, or an online meeting link" value="<%= form.location || '' %>" required>
+      </div>
+      <div class="col-12">
+        <label for="createdBy" class="form-label">Your name</label>
+        <input type="text" class="form-control" id="createdBy" name="createdBy"
+               value="<%= form.createdBy || '' %>" required>
+      </div>
+      <div class="col-12 d-flex gap-2">
+        <button type="submit" class="btn btn-brand"><i class="fa-solid fa-check me-2"></i>Create Session</button>
+        <a href="/" class="btn btn-outline-secondary">Cancel</a>
+      </div>
+    </div>
+  </form>
+</section>
+
+<%- include('partials/footer') %>
