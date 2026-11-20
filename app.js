@@ -1,3 +1,6 @@
+// Load variables from .env (MONGO_URI) before anything else uses them
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,7 +10,15 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var connectDB = require('./config/db');
+
 var app = express();
+
+// Connect to MongoDB (connection string comes from MONGO_URI)
+connectDB();
+
+// Site name available in every view as <%= siteName %>
+app.locals.siteName = 'StudyHuddle';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
