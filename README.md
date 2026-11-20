@@ -2,8 +2,8 @@
 
 StudyHuddle helps students find and host group study sessions for their courses. Part 1 is the first release: a landing page with the site name and team logo, a button to create a study session, and a table of upcoming sessions stored in MongoDB.
 
-**Live site:** [add your Render URL]
-**Team:** TJ Adetunji, [Mario Onouha]
+**Live site:** https://fall26-project.onrender.com/
+**Team:** TJ Adetunji, Mario Onouha
 
 ## Features in this release
 
