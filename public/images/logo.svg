@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="StudyHuddle logo">
+  <rect width="64" height="64" rx="14" fill="#312e81"/>
+  <circle cx="19" cy="25" r="5.5" fill="#fbbf24"/>
+  <circle cx="45" cy="25" r="5.5" fill="#fbbf24"/>
+  <circle cx="32" cy="19" r="6.5" fill="#f59e0b"/>
+  <path d="M10 37 Q21 32.5 32 38 L32 53 Q21 47.5 10 52 Z" fill="#ffffff"/>
+  <path d="M54 37 Q43 32.5 32 38 L32 53 Q43 47.5 54 52 Z" fill="#e0e7ff"/>
+  <path d="M32 38 L32 53" stroke="#312e81" stroke-width="1.5"/>
+</svg>
