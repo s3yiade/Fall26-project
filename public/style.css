@@ -1,0 +1,32 @@
+/* StudyHuddle styles, layered on top of Bootstrap.
+   Brand colours match the logo: indigo #312e81 and amber #f59e0b. */
+
+:root {
+  --brand: #312e81;
+  --brand-dark: #1e1b4b;
+  --accent: #f59e0b;
+}
+
+.bg-brand { background-color: var(--brand) !important; }
+.text-brand { color: var(--brand); }
+
+/* Hero banner on the landing page */
+.hero {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+}
+
+/* Main buttons in brand colours */
+.btn-brand {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.btn-brand:hover { background-color: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--brand-dark);
+  font-weight: 600;
+}
+.btn-accent:hover { background-color: #d97706; border-color: #d97706; color: #fff; }
