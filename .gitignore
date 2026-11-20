@@ -1,2 +1,8 @@
-node_modules/
+node_modules
 .env
+node_modules/
+.zip
+.odt
+atlas-credentials.env
+video Tj.mp4.7z
+project_part_1.zip
